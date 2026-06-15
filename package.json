@@ -1,6 +1,8 @@
 {
   "name": "liqour-store-pos",
   "version": "1.0.0",
+  "description": "Offline-first Windows Desktop POS for Wines & Spirits retail",
+  "author": "Liquor Store POS Systems",
   "private": true,
   "main": "main.js",
   "scripts": {
@@ -35,8 +37,10 @@
   "build": {
     "appId": "com.liquorstore.pos",
     "productName": "Liquor Store POS",
+    "copyright": "Copyright © 2026",
     "directories": {
-      "output": "dist"
+      "output": "dist",
+      "buildResources": "build"
     },
     "files": [
       "main.js",
@@ -45,7 +49,24 @@
       "node_modules/**/*"
     ],
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Liquor Store POS",
+      "runAfterFinish": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico"
     }
   }
 }
